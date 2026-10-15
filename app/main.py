@@ -39,6 +39,10 @@ class TaskUpdate(BaseModel):
 tasks: dict[int, Task] = {}
 next_id: int = 1
 
+@app.get("/version")
+async def version() -> dict[str, str]:
+    return {"version": settings.app_version}
+
 @app.get("/health")
 async def health():
     logger.debug("health check details: status=ok")
